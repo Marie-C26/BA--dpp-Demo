@@ -12,6 +12,9 @@
       color: #000000;
     }
 
+    body.lang-de .lang-en { display: none; }
+    body.lang-en .lang-de { display: none; }
+
     .topbar {
       background-color: #FFE100;
       color: #111;
@@ -26,15 +29,26 @@
       font-weight: bold;
     }
 
-    .login-button {
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .login-button, .lang-button {
       background: #111;
       color: white;
       border: none;
       padding: 10px 16px;
       border-radius: 8px;
       font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
     }
-    
+
+    .lang-button:hover, .login-button:hover {
+      opacity: 0.85;
+    }
 
     .container {
       max-width: 1000px;
@@ -178,9 +192,44 @@
       font-size: 12px;
       color: #666;
     }
+
+    .map-wrap {
+      margin-top: 14px;
+      background: #ffffff;
+      border: 1px solid #d8dee4;
+      border-radius: 10px;
+      padding: 10px;
+    }
+
+    .map-wrap svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .map-legend {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 13px;
+    }
+
+    .map-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .map-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+    }
   </style>
 </head>
-<body>
+<body class="lang-de">
 
   <script>
     const passwort = "dpp2026";
@@ -194,25 +243,48 @@
 
   <div class="topbar">
     <div class="topbar-title">Digital Product Passport</div>
-    <button class="login-button">Angemeldet</button>
+    <div class="topbar-right">
+      <button class="lang-button" onclick="toggleLanguage()">
+        <span class="lang-de">EN</span><span class="lang-en">DE</span>
+      </button>
+      <button class="login-button">
+        <span class="lang-de">Angemeldet</span><span class="lang-en">Logged in</span>
+      </button>
+    </div>
   </div>
 
  <div class="container">
 
   <div class="logo">
-    <img src="Logo.jpg." alt="Gühring Logo">
+    <img src="Logo.jpg" alt="Gühring Logo">
   </div>
 
-  <h1>Beispielhafter Digital Product Passport</h1>
-  <p class="subtitle">Demonstrator für die Bachelorarbeit</p>
+  <h1>
+    <span class="lang-de">Beispielhafter Digital Product Passport</span>
+    <span class="lang-en">Example Digital Product Passport</span>
+  </h1>
+  <p class="subtitle">
+    <span class="lang-de">Demonstrator für die Bachelorarbeit</span>
+    <span class="lang-en">Demonstrator for the Bachelor's thesis</span>
+  </p>
 
   <div class="hero">
     <div class="hero-text">
-      <h2>Produkt: Ratio Bohrer mit Innenkühlung VHM / Typ: INOX PRO</h2>
+      <h2>
+        <span class="lang-de">Produkt: Ratio Bohrer mit Innenkühlung VHM / Typ: INOX PRO</span>
+        <span class="lang-en">Product: Ratio Drill with Internal Cooling, Solid Carbide / Type: INOX PRO</span>
+      </h2>
       <p>
-        Dies ist ein beispielhafter digitaler Produktpass für ein Industrieprodukt.
-        Der Demonstrator zeigt, wie Produkt-, Material- und Nachhaltigkeitsdaten
-        digital gebündelt dargestellt werden können.
+        <span class="lang-de">
+          Dies ist ein beispielhafter digitaler Produktpass für ein Industrieprodukt.
+          Der Demonstrator zeigt, wie Produkt-, Material- und Nachhaltigkeitsdaten
+          digital gebündelt dargestellt werden können.
+        </span>
+        <span class="lang-en">
+          This is an example digital product passport for an industrial product.
+          The demonstrator shows how product, material, and sustainability data
+          can be bundled and presented digitally.
+        </span>
       </p>
     </div>
 
@@ -223,132 +295,318 @@
 
 </div>
     <details>
-      <summary>Produktinformationen</summary>
+      <summary>
+        <span class="lang-de">Produktinformationen</span>
+        <span class="lang-en">Product Information</span>
+      </summary>
       <p>
-        <strong>Bezeichnung:</strong> Ratio Bohrer mit Innenkühlung VHM<br>
-        <strong>Serie:</strong> 8513<br>
-        <strong>Durchmesser:</strong> Ø 3,000 mm<br>
-        <strong>Toleranz:</strong> m7<br>
-        <strong>Bohrtiefe:</strong> 5xD<br>
-        <strong>Norm:</strong> DIN 6537L<br>
-        <strong>Typ:</strong> INOX PRO<br>
-        <strong>Oberfläche:</strong> Perrox<br>
-        <strong>Spitzenwinkel:</strong> 140°<br>
-        <strong>Innenkühlung:</strong> mit<br>
-        <strong>Artikelnummer (Beispiel):</strong> 8513 3.000
+        <strong><span class="lang-de">Bezeichnung:</span><span class="lang-en">Designation:</span></strong>
+        <span class="lang-de">Ratio Bohrer mit Innenkühlung VHM</span>
+        <span class="lang-en">Ratio Drill with Internal Cooling, Solid Carbide</span><br>
+        <strong><span class="lang-de">Serie:</span><span class="lang-en">Series:</span></strong> 8513<br>
+        <strong><span class="lang-de">Durchmesser:</span><span class="lang-en">Diameter:</span></strong> Ø 3,000 mm<br>
+        <strong><span class="lang-de">Toleranz:</span><span class="lang-en">Tolerance:</span></strong> m7<br>
+        <strong><span class="lang-de">Bohrtiefe:</span><span class="lang-en">Drilling depth:</span></strong> 5xD<br>
+        <strong><span class="lang-de">Norm:</span><span class="lang-en">Standard:</span></strong> DIN 6537L<br>
+        <strong><span class="lang-de">Typ:</span><span class="lang-en">Type:</span></strong> INOX PRO<br>
+        <strong><span class="lang-de">Oberfläche:</span><span class="lang-en">Surface:</span></strong> Perrox<br>
+        <strong><span class="lang-de">Spitzenwinkel:</span><span class="lang-en">Point angle:</span></strong> 140°<br>
+        <strong><span class="lang-de">Innenkühlung:</span><span class="lang-en">Internal cooling:</span></strong>
+        <span class="lang-de">mit</span><span class="lang-en">yes</span><br>
+        <strong><span class="lang-de">Artikelnummer (Beispiel):</span><span class="lang-en">Article number (example):</span></strong> 8513 3.000
       </p>
       <p>
-        Der VHM-Bohrer INOX PRO wurde speziell für die Herstellung präziser Bohrungen
-        in rostfreien Stählen, Edelstählen und Titanwerkstoffen konzipiert. Durch die
-        optimierte Schneidengeometrie mit leicht konkaver Hauptschneidenform und die
-        Perrox-Beschichtung erreicht das Werkzeug höchste Bohrungsqualitäten bei
-        gleichzeitig langen Standzeiten.
+        <span class="lang-de">
+          Der VHM-Bohrer INOX PRO wurde speziell für die Herstellung präziser Bohrungen
+          in rostfreien Stählen, Edelstählen und Titanwerkstoffen konzipiert. Durch die
+          optimierte Schneidengeometrie mit leicht konkaver Hauptschneidenform und die
+          Perrox-Beschichtung erreicht das Werkzeug höchste Bohrungsqualitäten bei
+          gleichzeitig langen Standzeiten.
+        </span>
+        <span class="lang-en">
+          The solid carbide INOX PRO drill was specially designed for producing precise
+          holes in stainless steels and titanium materials. Thanks to the optimised
+          cutting-edge geometry with a slightly concave main cutting edge and the Perrox
+          coating, the tool achieves the highest hole quality alongside long tool life.
+        </span>
       </p>
       <p>
-        <strong>Anwendung:</strong> rost-/säure-/hitzebeständige Stähle, Titan- und
-        Titanlegierungen, Inconel, Hastelloy, Monel
-      </p>
-    </details>
-
-    <details>
-      <summary>Materialien und Stoffe</summary>
-      <p>
-        Das Produkt besteht aus <strong>Vollhartmetall (VHM)</strong>, einem Verbund
-        aus Wolframkarbid-Partikeln in einer Kobalt-Bindephase. Zusätzlich ist das
-        Werkzeug mit einer <strong>Perrox-Beschichtung</strong> versehen, die die
-        Verschleißfestigkeit und Standzeit bei der Bearbeitung von rostfreien und
-        hitzebeständigen Werkstoffen weiter erhöht.
-      </p>
-      <p>Beispielhafte Materialzusammensetzung: ca. 90 % Wolframkarbid (WC), ca. 10 % Kobalt (Co)-Bindephase.</p>
-    </details>
-
-    <details>
-      <summary>Nachhaltigkeitsdaten / CO2</summary>
-      <p>Beispielhafter CO2-Fußabdruck: 12,4 kg CO2e pro Produkt.</p>
-      <p>Recyclinganteil: 18 %</p>
-      <p>
-        Vollhartmetall-Werkzeuge sind grundsätzlich recyclingfähig. Am Ende der
-        Lebensdauer kann das Hartmetall aufbereitet und der Wolframkarbid-Anteil
-        einem Recyclingkreislauf zugeführt werden.
+        <strong><span class="lang-de">Anwendung:</span><span class="lang-en">Application:</span></strong>
+        <span class="lang-de">rost-/säure-/hitzebeständige Stähle, Titan- und Titanlegierungen, Inconel, Hastelloy, Monel</span>
+        <span class="lang-en">stainless/acid-/heat-resistant steels, titanium and titanium alloys, Inconel, Hastelloy, Monel</span>
       </p>
     </details>
 
     <details>
-      <summary>Reparatur, Nutzung und Entsorgung</summary>
+      <summary>
+        <span class="lang-de">Materialien und Stoffe</span>
+        <span class="lang-en">Materials and Substances</span>
+      </summary>
       <p>
-        Der Bohrer sollte gemäß den technischen Spezifikationen (Drehzahl, Vorschub,
-        Kühlschmierung) eingesetzt werden, um eine maximale Standzeit zu gewährleisten.
+        <span class="lang-de">
+          Das Produkt besteht aus <strong>Vollhartmetall (VHM)</strong>, einem Verbund
+          aus Wolframkarbid-Partikeln in einer Kobalt-Bindephase. Zusätzlich ist das
+          Werkzeug mit einer <strong>Perrox-Beschichtung</strong> versehen, die die
+          Verschleißfestigkeit und Standzeit bei der Bearbeitung von rostfreien und
+          hitzebeständigen Werkstoffen weiter erhöht.
+        </span>
+        <span class="lang-en">
+          The product is made of <strong>solid carbide</strong>, a composite of
+          tungsten carbide particles in a cobalt binder phase. In addition, the tool
+          is coated with <strong>Perrox</strong>, which further increases wear
+          resistance and tool life when machining stainless and heat-resistant materials.
+        </span>
       </p>
       <p>
-        Ein Nachschleifen ist je nach Verschleißzustand möglich und wird empfohlen,
-        um die Lebensdauer des Werkzeugs zu verlängern, bevor eine Entsorgung erfolgt.
+        <span class="lang-de">Beispielhafte Materialzusammensetzung: ca. 90&nbsp;% Wolframkarbid (WC), ca. 10&nbsp;% Kobalt (Co)-Bindephase.</span>
+        <span class="lang-en">Example material composition: approx. 90% tungsten carbide (WC), approx. 10% cobalt (Co) binder phase.</span>
+      </p>
+    </details>
+
+    <details>
+      <summary>
+        <span class="lang-de">Lieferkette &amp; Herkunft</span>
+        <span class="lang-en">Supply Chain &amp; Origin</span>
+      </summary>
+      <p>
+        <span class="lang-de">
+          Beispielhafte Darstellung der Rohstoffherkunft und Fertigung entlang der
+          Lieferkette. Ein zentraler Gedanke des Digital Product Passport ist die
+          Rückverfolgbarkeit von Materialien über die gesamte Wertschöpfungskette hinweg.
+        </span>
+        <span class="lang-en">
+          Example illustration of raw material origin and manufacturing along the
+          supply chain. A core idea of the Digital Product Passport is the
+          traceability of materials across the entire value chain.
+        </span>
+      </p>
+
+      <div class="map-wrap">
+        <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="700" height="300" fill="#eef3f7" rx="10"/>
+
+          <ellipse cx="330" cy="95" rx="70" ry="40" fill="#dbe6ee"/>
+          <ellipse cx="340" cy="190" rx="80" ry="70" fill="#dbe6ee"/>
+          <ellipse cx="480" cy="120" rx="120" ry="65" fill="#dbe6ee"/>
+
+          <path d="M 470 130 Q 400 110 345 100" fill="none" stroke="#0b4f6c" stroke-width="2" stroke-dasharray="6,5"/>
+          <path d="M 340 175 Q 335 140 335 105" fill="none" stroke="#0b4f6c" stroke-width="2" stroke-dasharray="6,5"/>
+          <path d="M 330 90 Q 400 40 520 60" fill="none" stroke="#0b4f6c" stroke-width="2" stroke-dasharray="6,5"/>
+
+          <circle cx="470" cy="130" r="9" fill="#e63946"/>
+          <text x="470" y="155" font-size="13" text-anchor="middle" fill="#111" font-family="Arial">China</text>
+          <text x="470" y="170" font-size="11" text-anchor="middle" fill="#444" font-family="Arial" class="lang-de">Wolframkarbid</text>
+          <text x="470" y="170" font-size="11" text-anchor="middle" fill="#444" font-family="Arial" class="lang-en">Tungsten carbide</text>
+
+          <circle cx="340" cy="180" r="9" fill="#f4a261"/>
+          <text x="340" y="270" font-size="13" text-anchor="middle" fill="#111" font-family="Arial">
+            <tspan class="lang-de">Dem. Rep. Kongo</tspan>
+            <tspan class="lang-en">DR Congo</tspan>
+          </text>
+          <text x="340" y="286" font-size="11" text-anchor="middle" fill="#444" font-family="Arial">
+            <tspan class="lang-de">Kobalt</tspan>
+            <tspan class="lang-en">Cobalt</tspan>
+          </text>
+
+          <circle cx="330" cy="90" r="10" fill="#0b4f6c"/>
+          <text x="235" y="80" font-size="13" text-anchor="middle" fill="#111" font-family="Arial">
+            <tspan class="lang-de">Deutschland</tspan>
+            <tspan class="lang-en">Germany</tspan>
+          </text>
+          <text x="235" y="96" font-size="11" text-anchor="middle" fill="#444" font-family="Arial">
+            <tspan class="lang-de">Fertigung</tspan>
+            <tspan class="lang-en">Manufacturing</tspan>
+          </text>
+
+          <path d="M 345 90 L 610 90" fill="none" stroke="#2a9d8f" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+          <text x="610" y="75" font-size="13" text-anchor="end" fill="#111" font-family="Arial">
+            <tspan class="lang-de">Kunde weltweit</tspan>
+            <tspan class="lang-en">Customer worldwide</tspan>
+          </text>
+
+          <defs>
+            <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+              <path d="M0,0 L8,4 L0,8 Z" fill="#2a9d8f"/>
+            </marker>
+          </defs>
+        </svg>
+
+        <div class="map-legend">
+          <div class="map-legend-item"><span class="map-dot" style="background:#e63946;"></span>
+            <span class="lang-de">Rohstoffquelle: Wolframkarbid</span>
+            <span class="lang-en">Raw material source: Tungsten carbide</span>
+          </div>
+          <div class="map-legend-item"><span class="map-dot" style="background:#f4a261;"></span>
+            <span class="lang-de">Rohstoffquelle: Kobalt</span>
+            <span class="lang-en">Raw material source: Cobalt</span>
+          </div>
+          <div class="map-legend-item"><span class="map-dot" style="background:#0b4f6c;"></span>
+            <span class="lang-de">Fertigungsstandort</span>
+            <span class="lang-en">Manufacturing site</span>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <span class="lang-de">Nachhaltigkeitsdaten / CO2</span>
+        <span class="lang-en">Sustainability Data / CO2</span>
+      </summary>
+      <p>
+        <span class="lang-de">Beispielhafter CO2-Fußabdruck: 12,4 kg CO2e pro Produkt.</span>
+        <span class="lang-en">Example CO2 footprint: 12.4 kg CO2e per product.</span>
       </p>
       <p>
-        Für Rückfragen zum Nachschleifen kontaktieren Sie uns unter:
+        <span class="lang-de">Recyclinganteil: 18&nbsp;%</span>
+        <span class="lang-en">Recycled content: 18%</span>
+      </p>
+      <p>
+        <span class="lang-de">
+          Vollhartmetall-Werkzeuge sind grundsätzlich recyclingfähig. Am Ende der
+          Lebensdauer kann das Hartmetall aufbereitet und der Wolframkarbid-Anteil
+          einem Recyclingkreislauf zugeführt werden.
+        </span>
+        <span class="lang-en">
+          Solid carbide tools are generally recyclable. At the end of their service
+          life, the carbide can be reprocessed and the tungsten carbide content
+          returned to a recycling loop.
+        </span>
+      </p>
+    </details>
+
+    <details>
+      <summary>
+        <span class="lang-de">Reparatur, Nutzung und Entsorgung</span>
+        <span class="lang-en">Repair, Use and Disposal</span>
+      </summary>
+      <p>
+        <span class="lang-de">
+          Der Bohrer sollte gemäß den technischen Spezifikationen (Drehzahl, Vorschub,
+          Kühlschmierung) eingesetzt werden, um eine maximale Standzeit zu gewährleisten.
+        </span>
+        <span class="lang-en">
+          The drill should be used according to the technical specifications
+          (speed, feed rate, coolant) to ensure maximum tool life.
+        </span>
+      </p>
+      <p>
+        <span class="lang-de">
+          Ein Nachschleifen ist je nach Verschleißzustand möglich und wird empfohlen,
+          um die Lebensdauer des Werkzeugs zu verlängern, bevor eine Entsorgung erfolgt.
+        </span>
+        <span class="lang-en">
+          Regrinding is possible depending on the wear condition and is recommended
+          to extend the tool's service life before disposal.
+        </span>
+      </p>
+      <p>
+        <span class="lang-de">Für Rückfragen zum Nachschleifen kontaktieren Sie uns unter:</span>
+        <span class="lang-en">For questions about regrinding, please contact us at:</span>
         <a href="mailto:dpp@guehring.info">dpp@guehring.info</a>
       </p>
       <p>
-        Nach Ende der Nutzungsdauer sollte das Werkzeug fachgerecht dem
-        Hartmetall-Recycling zugeführt werden.
+        <span class="lang-de">
+          Nach Ende der Nutzungsdauer sollte das Werkzeug fachgerecht dem
+          Hartmetall-Recycling zugeführt werden.
+        </span>
+        <span class="lang-en">
+          At the end of its service life, the tool should be properly disposed of
+          through carbide recycling.
+        </span>
       </p>
       <div class="doc-list">
-        <a class="doc-item" href="#" onclick="alert('Dies ist nur eine Demo-Verlinkung ohne echte Datei.'); return false;">
+        <a class="doc-item" href="#" onclick="alert('Dies ist nur eine Demo-Verlinkung ohne echte Datei. / This is only a demo link without a real file.'); return false;">
           <div class="doc-icon">PDF</div>
           <div class="doc-info">
             <span class="doc-name">Benutzerhandbuch_VHM-Bohrer_INOX-PRO.pdf</span>
-            <span class="doc-meta">Beispieldokument · 1,2 MB</span>
+            <span class="doc-meta">
+              <span class="lang-de">Beispieldokument · 1,2 MB</span>
+              <span class="lang-en">Example document · 1.2 MB</span>
+            </span>
           </div>
         </a>
-        <a class="doc-item" href="#" onclick="alert('Dies ist nur eine Demo-Verlinkung ohne echte Datei.'); return false;">
+        <a class="doc-item" href="#" onclick="alert('Dies ist nur eine Demo-Verlinkung ohne echte Datei. / This is only a demo link without a real file.'); return false;">
           <div class="doc-icon">PDF</div>
           <div class="doc-info">
             <span class="doc-name">Gefahrenhinweise_Bohrwerkzeuge.pdf</span>
-            <span class="doc-meta">Beispieldokument · 340 KB</span>
+            <span class="doc-meta">
+              <span class="lang-de">Beispieldokument · 340 KB</span>
+              <span class="lang-en">Example document · 340 KB</span>
+            </span>
           </div>
         </a>
       </div>
     </details>
 
     <details>
-      <summary>Compliance und Dokumente</summary>
+      <summary>
+        <span class="lang-de">Compliance und Dokumente</span>
+        <span class="lang-en">Compliance and Documents</span>
+      </summary>
       <p>
-        Das Produkt entspricht der Norm <strong>DIN 6537L</strong> für
-        Vollhartmetall-Spiralbohrer mit Innenkühlung und verlängerter Schneidlänge.
-      </p>
-      <p>
-        Beispielhafte Konformitäts- und Nachhaltigkeitsinformationen (z. B.
-        Konformitätserklärung, Materialdatenblatt, REACH-Konformität) können
-        hier als Dokumente hinterlegt werden.
+        <span class="lang-de">
+          Das Produkt entspricht der Norm <strong>DIN 6537L</strong> für
+          Vollhartmetall-Spiralbohrer mit Innenkühlung und verlängerter Schneidlänge.
+        </span>
+        <span class="lang-en">
+          The product complies with the <strong>DIN 6537L</strong> standard for
+          solid carbide twist drills with internal cooling and extended flute length.
+        </span>
       </p>
       <div class="doc-list">
-        <a class="doc-item" href="#" onclick="alert('Dies ist nur eine Demo-Verlinkung ohne echte Datei.'); return false;">
+        <a class="doc-item" href="#" onclick="alert('Dies ist nur eine Demo-Verlinkung ohne echte Datei. / This is only a demo link without a real file.'); return false;">
           <div class="doc-icon">PDF</div>
           <div class="doc-info">
             <span class="doc-name">Konformitaetserklaerung_EU.pdf</span>
-            <span class="doc-meta">Beispieldokument · 210 KB</span>
+            <span class="doc-meta">
+              <span class="lang-de">Beispieldokument · 210 KB</span>
+              <span class="lang-en">Example document · 210 KB</span>
+            </span>
           </div>
         </a>
-        <a class="doc-item" href="#" onclick="alert('Dies ist nur eine Demo-Verlinkung ohne echte Datei.'); return false;">
+        <a class="doc-item" href="#" onclick="alert('Dies ist nur eine Demo-Verlinkung ohne echte Datei. / This is only a demo link without a real file.'); return false;">
           <div class="doc-icon">PDF</div>
           <div class="doc-info">
             <span class="doc-name">Materialdatenblatt_VHM-Bohrer.pdf</span>
-            <span class="doc-meta">Beispieldokument · 480 KB</span>
+            <span class="doc-meta">
+              <span class="lang-de">Beispieldokument · 480 KB</span>
+              <span class="lang-en">Example document · 480 KB</span>
+            </span>
           </div>
         </a>
-        <a class="doc-item" href="#" onclick="alert('Dies ist nur eine Demo-Verlinkung ohne echte Datei.'); return false;">
+        <a class="doc-item" href="#" onclick="alert('Dies ist nur eine Demo-Verlinkung ohne echte Datei. / This is only a demo link without a real file.'); return false;">
           <div class="doc-icon">PDF</div>
           <div class="doc-info">
             <span class="doc-name">REACH-Konformitaet.pdf</span>
-            <span class="doc-meta">Beispieldokument · 150 KB</span>
+            <span class="doc-meta">
+              <span class="lang-de">Beispieldokument · 150 KB</span>
+              <span class="lang-en">Example document · 150 KB</span>
+            </span>
           </div>
         </a>
       </div>
     </details>
 
     <footer>
-      Demo-Seite für einen beispielhaften Digital Product Passport
+      <span class="lang-de">Demo-Seite für einen beispielhaften Digital Product Passport</span>
+      <span class="lang-en">Demo page for an example Digital Product Passport</span>
     </footer>
 
   </div>
+
+  <script>
+    function toggleLanguage() {
+      const body = document.body;
+      if (body.classList.contains('lang-de')) {
+        body.classList.remove('lang-de');
+        body.classList.add('lang-en');
+      } else {
+        body.classList.remove('lang-en');
+        body.classList.add('lang-de');
+      }
+    }
+  </script>
+
 </body>
 </html>
